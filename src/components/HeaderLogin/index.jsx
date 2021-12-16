@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import Header from "../Header/index";
 import Button from "../Button/index";
@@ -13,10 +13,10 @@ import {
 import { useAuth } from "../../providers/AuthProvider";
 
 const HeaderLogin = ({ link, children }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLink = (link) => {
-    history.push(link);
+    navigate(link);
   };
 
   const { handleLogout } = useAuth();

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import Form from "../../styles/form";
 
@@ -19,10 +19,10 @@ import { useModal } from "../../providers/ModalProvider";
 const Register = () => {
   const { handleShowModal } = useModal();
   const [buttonChildren, setButtonChildren] = useState("Cadastrar");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLink = (link) => {
-    history.push(link);
+    navigate(link);
   };
 
   const handleRegister = async () => {

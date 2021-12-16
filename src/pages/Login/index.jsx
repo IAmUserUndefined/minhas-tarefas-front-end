@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import Header from "../../components/Header/index";
 import Button from "../../components/Button/index";
@@ -11,10 +11,10 @@ import Form from "../../styles/form";
 import { useAuth } from "../../providers/AuthProvider";
 
 const Login = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLink = (link) => {
-    history.push(link);
+    navigate(link);
   };
 
   const { handleLogin, buttonChildren } = useAuth();

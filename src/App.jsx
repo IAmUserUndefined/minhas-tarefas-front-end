@@ -3,14 +3,14 @@ import { BrowserRouter } from "react-router-dom";
 
 import AppContainer from "./styles/app";
 
-import { CustomRoutes, Routes } from "./routes";
+import { AppRoutes, ModalRoute } from "./routes";
 
 const App = () => {
   return (
     <BrowserRouter>
       <AppContainer>
-        <CustomRoutes />
-        <Routes />
+        <ModalRoute />
+        <AppRoutes />
       </AppContainer>
     </BrowserRouter>
   );

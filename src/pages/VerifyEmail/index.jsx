@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import VerifyEmailTitle from "../../components/VerifyEmailTitle/index";
 
@@ -8,7 +8,7 @@ import api from "../../services/api";
 import { useModal } from "../../providers/ModalProvider";
 
 const VerifyEmail = ({ location }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { search } = location;
   const { handleShowModal } = useModal();
 
@@ -24,7 +24,7 @@ const VerifyEmail = ({ location }) => {
         );
     };
     handleVerifyEmail();
-    history.push("/");
+    navigate("/");
   });
 
   return <VerifyEmailTitle />;

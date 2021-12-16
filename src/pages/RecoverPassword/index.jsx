@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router";
 
 import Header from "../../components/Header/index";
 import Button from "../../components/Button/index";
@@ -16,11 +16,11 @@ import { useModal } from "../../providers/ModalProvider";
 const RecoverPassword = ({ location }) => {
   const { handleShowModal } = useModal();
   const [buttonChildren, setButtonChildren] = useState("Atualizar Senha");
-  const history = useHistory();
-  const { search } = location;
+  const navigate = useNavigate();
+  const { search } = useLocation();
 
   const handleLink = (link) => {
-    history.push(link);
+    navigate(link);
   };
 
   const handleRecoverPassword = async () => {
@@ -31,6 +31,7 @@ const RecoverPassword = ({ location }) => {
     let { password, passwordConfirm } = form;
 
     if (!password.value || !passwordConfirm.value) {
+      setButtonChildren("Atualizar Senha");
       return handleShowModal("Preencha todos os campos");
     }
 

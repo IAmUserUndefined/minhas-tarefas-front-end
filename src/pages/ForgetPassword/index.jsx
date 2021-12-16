@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import Header from "../../components/Header/index";
 import Button from "../../components/Button/index";
@@ -16,12 +16,12 @@ import isEmailValid from "../../utils/isEmailValid";
 import { useModal } from "../../providers/ModalProvider";
 
 const ForgetPassword = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [buttonChildren, setButtonChildren] = useState("Enviar Email");
   const { handleShowModal } = useModal();
 
   const handleLink = (link) => {
-    history.push(link);
+    navigate(link);
   };
 
   const handleForgetPassword = async () => {

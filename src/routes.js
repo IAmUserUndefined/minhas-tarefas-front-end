@@ -1,8 +1,8 @@
 import React from 'react';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
-import { useAuth } from './providers/AuthProvider';
-import { useModal } from './providers/ModalProvider';
+import PublicRoute from './components/PublicRoute/index';
+import PrivateRoute from './components/PrivateRoute/index';
 
 import Login from "./pages/Login/index";
 import Register from "./pages/Register/index";
@@ -15,59 +15,60 @@ import VerifyEmailUpdate from "./pages/VerifyEmailUpdate/index";
 import Modal from "./pages/Modal/index";
 import PageNotFound from './pages/PageNotFound';
 
-import LoadingBigGif from "./components/LoadingBigGif";
-
-const CustomRoute = ({ isPrivate, isNotPrivate, location, ...rest }) => {
-  const { loading, authenticated, expirySession, setExpirySession, handleLogout } = useAuth();
-  const { handleShowModal } = useModal();
-
-  if (loading) {
-    return <LoadingBigGif />;
-  }
-
-  if(expirySession) {
-    setExpirySession(false);
-    handleLogout();
-    return handleShowModal("Sessão Expirada");
-  }
-
-  if(location.pathname === "/password-recover" && location.search === "") {
-    return <Redirect to="/" />
-  }
-
-  if (isPrivate && !authenticated) {
-    return <Redirect to="/" />
-  }
-
-  if (isNotPrivate && authenticated) {
-    return <Redirect to="/tasks" />
-  }
-
-  return <Route {...rest} />;
-};
-
-export const CustomRoutes = () => {
+export const AppRoutes = () => {
   return (
-        <>
-          <Switch>
-            <CustomRoute path="/" isNotPrivate exact component={Login} />
-            <CustomRoute path="/register" isNotPrivate exact component={Register} />
-            <CustomRoute path="/verify-email" isNotPrivate exact component={VerifyEmail} />
-            <CustomRoute path="/forget-password" isNotPrivate exact component={ForgetPassword} />
-            <CustomRoute path="/password-recover" isNotPrivate exact component={RecoverPassword} />
-            <CustomRoute path="/tasks" isPrivate exact component={Tasks} />
-            <CustomRoute path="/config-user" isPrivate exact component={ConfigUser} />
-            <CustomRoute path="/verify-email-update" isPrivate exact component={VerifyEmailUpdate} />
-            <Route component={PageNotFound}/>
-          </Switch>
-        </>
-    );
-};
+      <>
+          <Routes>
+              <Route path="/" element={<PublicRoute />} exact>
+                  <Route path="/" element={<Login />} exact />
+              </Route>
 
-export const Routes = () => {
-  return (
-    <>
-      <Route component={Modal}/>
-    </>
+              <Route path="/register" element={<PublicRoute />} exact>
+                  <Route path="/register" element={<Register />} />
+              </Route>
+
+              <Route path="/verify-email" element={<PublicRoute />} exact>
+                  <Route path="/verify-email" element={<VerifyEmail />} exact />
+              </Route>
+
+              <Route path="/forget-password" element={<PublicRoute />} exact>
+                  <Route path="/forget-password" element={<ForgetPassword />} exact />
+              </Route>
+
+              <Route path="/password-recover" element={<PublicRoute />} exact>
+                  <Route path="/password-recover" element={<RecoverPassword />} exact />
+              </Route>
+
+              <Route path="/tasks" element={<PrivateRoute />} exact>
+                  <Route path="/tasks" element={<Tasks />} exact />
+              </Route>
+
+              <Route path="/config-user" element={<PrivateRoute />} exact>
+                  <Route path="/config-user" element={<ConfigUser />} exact />
+              </Route>
+
+              <Route path="/verify-email-update" element={<PrivateRoute />} exact>
+                  <Route path="/verify-email-update" element={<VerifyEmailUpdate/>} exact />
+              </Route>
+
+              <Route path="/*" element={<PageNotFound/>} />
+
+          </Routes>
+      </>
   );
-};
+}
+
+export const ModalRoute = () => {
+  return (
+      <>
+          <Routes>
+              <Route path="/" element={<Modal />} />
+              <Route path="/register" element={<Modal />} />
+              <Route path="/forget-password" element={<Modal />} />
+              <Route path="/password-recover" element={<Modal />} />
+              <Route path="/photos" element={<Modal />} />
+              <Route path="/config-user" element={<Modal />} />
+          </Routes>
+      </>
+  );
+}
