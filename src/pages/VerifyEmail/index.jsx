@@ -7,7 +7,7 @@ import api from "../../services/api";
 
 import { useModal } from "../../providers/ModalProvider";
 
-const VerifyEmail = ({ location }) => {
+const VerifyEmail = () => {
   const navigate = useNavigate();
   const { search } = location;
   const { handleShowModal } = useModal();

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 import VerifyEmailTitle from "../../components/VerifyEmailTitle/index";
 
@@ -6,14 +7,15 @@ import api from "../../services/api";
 
 import { useModal } from "../../providers/ModalProvider";
 
-const VerifyEmailUpdate = ({ location }) => {
+const VerifyEmailUpdate = () => {
+  const navigate = useNavigate();
   const { search } = location;
   const { handleShowModal } = useModal();
 
   useEffect(() => {
     const handleVerifyEmailUpdate = async () => {
       await api
-        .post(`/verify-email${search}`)
+        .patch(`/update-email${search}`)
         .then(({ data }) => handleShowModal(data.response))
         .catch(({ response }) =>
           response
@@ -23,6 +25,7 @@ const VerifyEmailUpdate = ({ location }) => {
     };
 
     handleVerifyEmailUpdate();
+    navigate("/");
   });
 
   return <VerifyEmailTitle />;

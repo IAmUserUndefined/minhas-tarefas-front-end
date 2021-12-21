@@ -47,8 +47,8 @@ export const AppRoutes = () => {
                   <Route path="/config-user" element={<ConfigUser />} exact />
               </Route>
 
-              <Route path="/verify-email-update" element={<PrivateRoute />} exact>
-                  <Route path="/verify-email-update" element={<VerifyEmailUpdate/>} exact />
+              <Route path="/update-email" element={<PrivateRoute />} exact>
+                  <Route path="/update-email" element={<VerifyEmailUpdate/>} exact />
               </Route>
 
               <Route path="/*" element={<PageNotFound/>} />
@@ -62,12 +62,7 @@ export const ModalRoute = () => {
   return (
       <>
           <Routes>
-              <Route path="/" element={<Modal />} />
-              <Route path="/register" element={<Modal />} />
-              <Route path="/forget-password" element={<Modal />} />
-              <Route path="/password-recover" element={<Modal />} />
-              <Route path="/photos" element={<Modal />} />
-              <Route path="/config-user" element={<Modal />} />
+              <Route path="/*" element={<Modal />} />
           </Routes>
       </>
   );

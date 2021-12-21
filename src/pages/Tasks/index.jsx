@@ -31,7 +31,7 @@ const Tasks = () => {
 
   return (
     <>
-      <HeaderLogin link="config-user" children="Configurações" />
+      <HeaderLogin link="/config-user" children="Configurações" />
       <AddTask />
       {tasks.map((task) => (
         <Task key={task.id} task={task} />
