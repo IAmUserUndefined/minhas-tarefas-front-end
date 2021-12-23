@@ -21,6 +21,7 @@
 - React JS
 - Create React App
 - Styled Components
+- Javascript
 
 # Instalação
 Você precisa ter instalado em sua máquina o Node, GIT e o pacote Yarn instalado de forma global, após isso rode o seguinte comando: 
