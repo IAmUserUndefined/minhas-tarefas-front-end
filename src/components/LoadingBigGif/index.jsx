@@ -4,7 +4,7 @@ import LoadingBigGifContainer from './styles';
 
 const LoadingBigGif = () => {
     return <LoadingBigGifContainer>
-        <img src="img/loading.gif" alt="Gif de Carregamento" />
+        <div></div>
     </LoadingBigGifContainer>;
 }
 
