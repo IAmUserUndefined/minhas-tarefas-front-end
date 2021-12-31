@@ -15,6 +15,7 @@ const LoadingBigGifContainer = styled.div`
     padding: 1rem;
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: chartreuse;
     border-radius: 50px;
 
@@ -25,6 +26,14 @@ const LoadingBigGifContainer = styled.div`
         height: 200px;
         width: 200px;
         animation: loading 2s linear infinite;
+
+        @media (max-width: 576px) {
+            border: 1.5rem solid #000;
+            border-radius: 50%;
+            border-top-color: rgba(0,0,0,0.2);
+            height: 150px;
+            width: 150px;
+        }
     }
 `;
 

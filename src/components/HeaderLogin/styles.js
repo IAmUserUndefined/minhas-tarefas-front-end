@@ -2,21 +2,20 @@ import styled from "styled-components";
 
 export const ContainerHeaderLogin = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: row;
 `;
 
 export const ContainerHeaderTitle = styled.div`
-  font-size: 1.3rem;
 
   > h1 {
     color: #eee;
     text-align: center;
-    width: 200px;
+    width: 210px;
 
     @media (max-width: 576px) {
-      width: 140px;
-      font-size: 2.3rem;
+      width: 125px;
+      font-size: 2rem;
     }
   }
 `;

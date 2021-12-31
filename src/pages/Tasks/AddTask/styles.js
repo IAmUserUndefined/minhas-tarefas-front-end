@@ -4,10 +4,7 @@ export const AddTaskContainer = styled.div`
   margin: 15px 0;
   width: 100%;
   display: flex;
-
-  > div {
-    margin-left: 10px;
-  }
+  justify-content: center;
 `;
 
 export const AddTaskInput = styled.input`
@@ -18,9 +15,9 @@ export const AddTaskInput = styled.input`
   background-color: #444;
   color: #eee;
   font-size: 16px;
-  flex: 1;
+  margin-right: .7rem;
 
   @media (max-width: 576px) {
-    width: 166px;
+    width: 140px;
   }
 `;
