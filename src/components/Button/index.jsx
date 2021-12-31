@@ -4,9 +4,11 @@ import { ButtonStyle } from "./styles";
 
 const Button = ({ children, onClick }) => {
   return (
-    <ButtonStyle onClick={onClick} type="button">
-      {children}
-    </ButtonStyle>
+    <div>
+        <ButtonStyle onClick={onClick} type="button">
+          {children}
+        </ButtonStyle>
+    </div>
   );
 };
 

@@ -8,6 +8,7 @@ import LoadingGif from "../../components/LoadingGif/index";
 import Form from "../../styles/form";
 
 import api from "../../services/api";
+
 import isEmailValid from "../../utils/isEmailValid";
 import isPasswordValid from "../../utils/isPasswordValid";
 
@@ -173,56 +174,50 @@ const ConfigUser = () => {
       <HeaderLogin link="/tasks" children="Tarefas" />
 
       <Form name="updateEmail">
-        <h2>Atualizar Email</h2>
+          <h2>Atualizar Email</h2>
 
-        <InputForm type="email" placeholder="Email" name="email" />
+          <InputForm type="email" placeholder="Email" name="email" />
 
-        <div>
           <Button onClick={handleUpdateEmail}>{buttonChidrenEmail}</Button>
-        </div>
       </Form>
 
       <Form name="updatePassword">
-        <h2>Atualizar Senha</h2>
+          <h2>Atualizar Senha</h2>
 
-        <InputForm
-          type="password"
-          placeholder="Senha Atual"
-          name="passwordCurrent"
-        />
-        <InputForm
-          type="password"
-          placeholder="Nova Senha"
-          name="newPassword"
-        />
-        <InputForm
-          type="password"
-          placeholder="Confirmação de Nova Senha"
-          name="newPasswordConfirm"
-        />
+          <InputForm
+            type="password"
+            placeholder="Senha Atual"
+            name="passwordCurrent"
+          />
+          <InputForm
+            type="password"
+            placeholder="Nova Senha"
+            name="newPassword"
+          />
+          <InputForm
+            type="password"
+            placeholder="Confirmação de Nova Senha"
+            name="newPasswordConfirm"
+          />
 
-        <div>
           <Button onClick={handleUpdatePassword}>{buttonChidrenPassword}</Button>
-        </div>
       </Form>
 
       <Form name="deleteUser">
-        <h2>Excluir Usuário</h2>
+          <h2>Excluir Usuário</h2>
 
-        <InputForm 
-          type="password" 
-          placeholder="Senha" 
-          name="password" 
-        />
-        <InputForm
-          type="password"
-          placeholder="Confirmação de Senha"
-          name="passwordConfirm"
-        />
+          <InputForm 
+            type="password" 
+            placeholder="Senha" 
+            name="password" 
+          />
+          <InputForm
+            type="password"
+            placeholder="Confirmação de Senha"
+            name="passwordConfirm"
+          />
 
-        <div>
           <Button onClick={handleDeleteUser}>{buttonChidrenDelete}</Button>
-        </div>
       </Form>
   </>
   )

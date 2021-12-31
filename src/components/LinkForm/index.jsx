@@ -1,11 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { LinkFormStyle } from "./styles";
 
-const LinkForm = ({ children, onClick }) => {
+const LinkForm = ({ children, link }) => {
+  const navigate = useNavigate();
+  const handleLink = (link) => navigate(link)
   return (
     <>
-      <LinkFormStyle onClick={onClick}>{children}</LinkFormStyle>
+      <div>
+          <LinkFormStyle onClick={() => handleLink(link)}>{children}</LinkFormStyle>
+      </div>
     </>
   );
 };

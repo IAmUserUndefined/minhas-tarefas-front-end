@@ -38,10 +38,20 @@ export const ModalStyle = styled.div`
   position: relative;
   animation: modal 0.6s;
 
+  @media (max-width: 576px) {
+    min-width: 250px;
+    width: 300px;
+    height: 200px;
+  }
+
   > h3 {
     color: #fff;
-    font-size: 2rem;
+    font-size: 1.7rem;
     text-align: center;
+
+    @media (max-width: 576px) {
+      font-size: 1.2rem;
+    }
   }
 
   > button {

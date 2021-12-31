@@ -24,13 +24,12 @@ const HeaderLogin = ({ link, children }) => {
   return (
     <ContainerHeaderLogin>
       <ContainerHeaderTitle>
-        <Header />
+        <h1>Minhas Tarefas</h1>
       </ContainerHeaderTitle>
 
-      <ContainerHeaderLoginButton>
-        <Button onClick={() => handleLink(link)}>{children}</Button>
-
-        <Button onClick={() => handleLogout()}>Sair</Button>
+        <ContainerHeaderLoginButton>
+          <Button onClick={() => handleLink(link)}>{children}</Button>
+          <Button onClick={() => handleLogout()}>Sair</Button>
       </ContainerHeaderLoginButton>
     </ContainerHeaderLogin>
   );

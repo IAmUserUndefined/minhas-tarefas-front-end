@@ -81,9 +81,7 @@ const RecoverPassword = ({ location }) => {
           name="passwordConfirm"
         />
 
-        <div>
-          <Button onClick={handleRecoverPassword}>{buttonChildren}</Button>
-        </div>
+        <Button onClick={handleRecoverPassword}>{buttonChildren}</Button>
       </Form>
     </>
   );

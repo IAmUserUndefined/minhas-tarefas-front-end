@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
 
 import Form from "../../styles/form";
 
@@ -7,23 +6,18 @@ import Header from "../../components/Header/index";
 import Button from "../../components/Button/index";
 import InputForm from "../../components/InputForm/index";
 import LinkForm from "../../components/LinkForm/index";
+import LoadingGif from "../../components/LoadingGif/index";
 
 import api from "../../services/api";
 
 import isEmailValid from "../../utils/isEmailValid";
 import isPasswordValid from "../../utils/isPasswordValid";
-import LoadingGif from "../../components/LoadingGif/index";
 
 import { useModal } from "../../providers/ModalProvider";
 
 const Register = () => {
   const { handleShowModal } = useModal();
   const [buttonChildren, setButtonChildren] = useState("Cadastrar");
-  const navigate = useNavigate();
-
-  const handleLink = (link) => {
-    navigate(link);
-  };
 
   const handleRegister = async () => {
     setButtonChildren(<LoadingGif />);
@@ -103,15 +97,13 @@ const Register = () => {
           name="passwordConfirm"
         />
 
-        <div>
-          <Button onClick={handleRegister}>{buttonChildren}</Button>
-        </div>
+        <Button onClick={handleRegister}>{buttonChildren}</Button>
 
-        <LinkForm onClick={() => handleLink("/")}>
+        <LinkForm link="/">
           Já tem um cadastro?
         </LinkForm>
-        <br />
-        <LinkForm onClick={() => handleLink("/forget-password")}>
+
+        <LinkForm link="/forget-password">
           Esqueceu sua senha?
         </LinkForm>
       </Form>

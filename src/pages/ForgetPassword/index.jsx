@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
 
 import Header from "../../components/Header/index";
 import Button from "../../components/Button/index";
@@ -16,13 +15,8 @@ import isEmailValid from "../../utils/isEmailValid";
 import { useModal } from "../../providers/ModalProvider";
 
 const ForgetPassword = () => {
-  const navigate = useNavigate();
   const [buttonChildren, setButtonChildren] = useState("Enviar Email");
   const { handleShowModal } = useModal();
-
-  const handleLink = (link) => {
-    navigate(link);
-  };
 
   const handleForgetPassword = async () => {
     setButtonChildren(<LoadingGif />);
@@ -66,13 +60,13 @@ const ForgetPassword = () => {
       <Form name="forgetPassword">
         <InputForm type="email" placeholder="Email" name="email" />
 
-        <div>
-          <Button onClick={handleForgetPassword}>{buttonChildren}</Button>
-        </div>
+        <Button onClick={handleForgetPassword}>{buttonChildren}</Button>
 
-        <LinkForm onClick={() => handleLink("/")}>Já tem um cadastro?</LinkForm>
-        <br />
-        <LinkForm onClick={() => handleLink("/register")}>
+        <LinkForm link="/">
+          Já tem um cadastro?
+        </LinkForm>
+
+        <LinkForm link="/register">
           Ainda não é cadastrado?
         </LinkForm>
       </Form>

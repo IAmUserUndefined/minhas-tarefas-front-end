@@ -6,7 +6,6 @@ import LoadingGif from "../../../components/LoadingGif/index";
 import {
   AddTaskContainer,
   AddTaskInput,
-  AddTaskButtonContainer,
 } from "./styles";
 
 import api from "../../../services/api";
@@ -58,9 +57,7 @@ const AddTask = () => {
           placeholder="Nome da Tarefa"
         />
 
-        <AddTaskButtonContainer>
-          <Button onClick={handleAddTaskClick}>{buttonChildren}</Button>
-        </AddTaskButtonContainer>
+        <Button onClick={handleAddTaskClick}>{buttonChildren}</Button>
       </AddTaskContainer>
     </>
   );
