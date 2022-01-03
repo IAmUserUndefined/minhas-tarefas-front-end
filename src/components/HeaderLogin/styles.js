@@ -12,10 +12,12 @@ export const ContainerHeaderTitle = styled.div`
     color: #eee;
     text-align: center;
     width: 210px;
+    margin-left: -2.6rem;
 
     @media (max-width: 576px) {
       width: 125px;
       font-size: 2rem;
+      margin-left: 0;
     }
   }
 `;
