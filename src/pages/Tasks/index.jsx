@@ -32,10 +32,12 @@ const Tasks = () => {
   return (
     <>
       <HeaderLogin link="/config-user" children="Configurações" />
-      <AddTask />
-      {tasks.map((task) => (
-        <Task key={task.id} task={task} />
-      ))}
+      <main>
+        <AddTask />
+        {tasks.map((task) => (
+          <Task key={task.id} task={task} />
+        ))}
+      </main>
     </>
   );
 };

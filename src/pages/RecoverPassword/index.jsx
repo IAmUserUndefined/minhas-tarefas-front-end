@@ -68,7 +68,8 @@ const RecoverPassword = ({ location }) => {
     <>
       <Header />
 
-      <Form name="recoverPassword">
+      <main>
+        <Form name="recoverPassword">
 
         <InputForm
           type="password"
@@ -82,7 +83,8 @@ const RecoverPassword = ({ location }) => {
         />
 
         <Button onClick={handleRecoverPassword}>{buttonChildren}</Button>
-      </Form>
+        </Form>
+      </main>
     </>
   );
 };

@@ -17,20 +17,22 @@ const Login = () => {
     <>
       <Header />
 
-      <Form name="login">
-        <InputForm type="email" placeholder="Email" name="email" />
-        <InputForm type="password" placeholder="Senha" name="password" />
+      <main>
+        <Form name="login">
+          <InputForm type="email" placeholder="Email" name="email" />
+          <InputForm type="password" placeholder="Senha" name="password" />
 
-        <Button onClick={() => handleLogin()}>{buttonChildren}</Button>
+          <Button onClick={() => handleLogin()}>{buttonChildren}</Button>
 
-        <LinkForm link="/register">
-          Ainda não tem um cadastro?
-        </LinkForm>
-        
-        <LinkForm link="/forget-password">
-          Esqueceu sua senha?
-        </LinkForm>
-      </Form>
+          <LinkForm link="/register">
+            Ainda não tem um cadastro?
+          </LinkForm>
+          
+          <LinkForm link="/forget-password">
+            Esqueceu sua senha?
+          </LinkForm>
+        </Form>
+      </main>
     </>
   );
 };

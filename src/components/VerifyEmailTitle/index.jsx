@@ -3,7 +3,13 @@ import React from "react";
 import { VerifyEmailTitleStyle } from "./styles";
 
 const VerifyEmailTitle = () => {
-  return <VerifyEmailTitleStyle>Verificando Email</VerifyEmailTitleStyle>;
+  return (
+    <>
+      <main>
+        <VerifyEmailTitleStyle>Verificando Email</VerifyEmailTitleStyle>
+      </main>
+    </>
+  );
 };
 
 export default VerifyEmailTitle;
