@@ -1,6 +1,6 @@
 # Minhas Tarefas - Front-end
 
-# <a href="https://minhas-tarefas-jp-dev.herokuapp.com/">🔗 Minhas Tarefas</a>
+# <a href="https://minhastarefasjpdev.herokuapp.com/">🔗 Minhas Tarefas</a>
 <p>🚀 Aplicação voltada para administração de tarefas</p>
 
 # Status da Aplicação
