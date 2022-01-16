@@ -20,7 +20,7 @@ const Tasks = () => {
         .get("/task")
         .then(({ data }) => (mounted ? setTasks(data.response) : null))
         .catch(({ response }) =>
-          response === undefined ? handleShowModal("Erro no servidor, as tarefas não pode ser apresentadas") : null
+          mounted && response === undefined  ? handleShowModal("Erro no servidor, as tarefas não pode ser apresentadas") : null
         );
     };
 
