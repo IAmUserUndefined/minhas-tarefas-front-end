@@ -17,39 +17,36 @@ import { useModal } from "../../providers/ModalProvider";
 const ForgetPassword = () => {
   const [buttonChildren, setButtonChildren] = useState("Enviar Email");
   const { handleShowModal } = useModal();
+  const [formValues, setFormValues] = useState({});
 
-  const handleForgetPassword = async () => {
-    setButtonChildren(<LoadingGif />);
-
-    const form = document.forms.forgetPassword;
-
-    let { email } = form;
+  const handleForgetPassword = async (e) => {
+    e.preventDefault();
+    
+    const { email } = e.target;
 
     if (!email.value) {
-      setButtonChildren("Enviar Email");
       return handleShowModal("Preencha o campo de email");
     }
 
     if (!isEmailValid(email.value)) {
-      setButtonChildren("Enviar Email");
-      email.value = "";
       return handleShowModal("Coloque um email válido");
     }
+    
+    setButtonChildren(<LoadingGif />);
 
     await api
       .post("/user/password/send-token-password-recover", {
         email: email.value,
       })
       .then(({ data }) => {
+        setFormValues({});
         handleShowModal(data.response);
       })
       .catch(({ response }) =>
         response
           ? handleShowModal(response.data.response)
-          : handleShowModal("Erro no Servidor")
+          : handleShowModal("Erro no Servidor, tente novamente mais tarde")
       );
-
-    email.value = "";
 
     setButtonChildren("Enviar Email");
   };
@@ -59,10 +56,10 @@ const ForgetPassword = () => {
       <Header />
 
       <main>
-        <Form name="forgetPassword">
-          <InputForm type="email" placeholder="Email" name="email" />
+        <Form onSubmit={handleForgetPassword}>
+          <InputForm type="email" placeholder="Email" name="email" formValues={formValues} setFormValues={setFormValues} />
 
-          <Button onClick={handleForgetPassword}>{buttonChildren}</Button>
+          <Button type="submit">{buttonChildren}</Button>
 
           <LinkForm link="/">
             Já tem um cadastro?

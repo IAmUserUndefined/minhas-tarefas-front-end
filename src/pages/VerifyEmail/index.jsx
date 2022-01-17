@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 
 import VerifyEmailTitle from "../../components/VerifyEmailTitle/index";
 
@@ -9,7 +9,7 @@ import { useModal } from "../../providers/ModalProvider";
 
 const VerifyEmail = () => {
   const navigate = useNavigate();
-  const { search } = location;
+  const { search } = useLocation();
   const { handleShowModal } = useModal();
 
   useEffect(() => {

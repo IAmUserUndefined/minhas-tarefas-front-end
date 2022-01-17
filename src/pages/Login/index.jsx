@@ -10,19 +10,18 @@ import Form from "../../styles/form";
 import { useAuth } from "../../providers/AuthProvider";
 
 const Login = () => {
-
-  const { handleLogin, buttonChildren } = useAuth();
+  const { handleLogin, buttonChildren, formValues, setFormValues } = useAuth();
 
   return (
     <>
       <Header />
 
       <main>
-        <Form name="login">
-          <InputForm type="email" placeholder="Email" name="email" />
-          <InputForm type="password" placeholder="Senha" name="password" />
+        <Form onSubmit={handleLogin}>
+          <InputForm type="email" placeholder="Email" name="email" formValues={formValues} setFormValues={setFormValues} />
+          <InputForm type="password" placeholder="Senha" name="password" formValues={formValues} setFormValues={setFormValues} />
 
-          <Button onClick={() => handleLogin()}>{buttonChildren}</Button>
+          <Button type="submit">{buttonChildren}</Button>
 
           <LinkForm link="/register">
             Ainda não tem um cadastro?

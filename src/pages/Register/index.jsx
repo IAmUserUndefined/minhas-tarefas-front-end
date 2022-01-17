@@ -15,41 +15,36 @@ import isPasswordValid from "../../utils/isPasswordValid";
 
 import { useModal } from "../../providers/ModalProvider";
 
-const Register = () => {
+const Register = (props) => {
   const { handleShowModal } = useModal();
   const [buttonChildren, setButtonChildren] = useState("Cadastrar");
+  const [formValues, setFormValues] = useState({});
 
-  const handleRegister = async () => {
-    setButtonChildren(<LoadingGif />);
+  const handleRegister = async (e) => {
 
-    const form = document.forms.register;
+    e.preventDefault();
 
-    let { email, password, passwordConfirm } = form;
+    const { email, password, passwordConfirm } = e.target;
 
     if (!email.value || !password.value || !passwordConfirm.value) {
-      setButtonChildren("Cadastrar");
       return handleShowModal("Preencha todos os campos");
     }
 
     if (!isEmailValid(email.value)) {
-      setButtonChildren("Cadastrar");
-      email.value = "";
       return handleShowModal("Coloque um email válido");
     }
 
     const { result, message } = isPasswordValid(password.value);
 
     if (!result) {
-      setButtonChildren("Cadastrar");
       return handleShowModal(message);
     }
 
     if (password.value !== passwordConfirm.value) {
-      setButtonChildren("Cadastrar");
-      password.value = "";
-      passwordConfirm.value = "";
       return handleShowModal("As senhas não coincidem");
     }
+
+    setButtonChildren(<LoadingGif />);
 
     await api
       .post("/user/create", {
@@ -58,20 +53,14 @@ const Register = () => {
         passwordConfirm: passwordConfirm.value,
       })
       .then(({ data }) => {
-        email.value = "";
-        password.value = "";
-        passwordConfirm.value = "";
+        setFormValues({});
         handleShowModal(data.response);
       })
       .catch(({ response }) =>
         response
           ? handleShowModal(response.data.response)
-          : handleShowModal("Erro no Servidor")
+          : handleShowModal("Erro no Servidor, tente novamente mais tarde")
       );
-
-    email.value = "";
-    password.value = "";
-    passwordConfirm.value = "";
 
     setButtonChildren("Cadastrar");
   };
@@ -81,24 +70,30 @@ const Register = () => {
       <Header />
 
       <main>
-        <Form name="register">
+        <Form onSubmit={handleRegister}>
           <InputForm 
             type="email" 
             placeholder="Email" 
             name="email" 
+            formValues={formValues}
+            setFormValues={setFormValues}
           />
           <InputForm 
             type="password" 
             placeholder="Senha" 
             name="password" 
+            formValues={formValues}
+            setFormValues={setFormValues}
           />
           <InputForm
             type="password"
             placeholder="Confirmação de Senha"
             name="passwordConfirm"
+            formValues={formValues}
+            setFormValues={setFormValues}
           />
 
-          <Button onClick={handleRegister}>{buttonChildren}</Button>
+          <Button type="submit">{buttonChildren}</Button>
 
           <LinkForm link="/">
             Já tem um cadastro?
