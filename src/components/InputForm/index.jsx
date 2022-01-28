@@ -17,7 +17,6 @@ const Input = ({ formValues, setFormValues, type, placeholder, name }) => {
         name={name} 
         onChange={handleInputChange} 
         value={formValues[name] || ""}
-        required
       />
     </>
   );
